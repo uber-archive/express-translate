@@ -1,0 +1,46 @@
+{
+  "name": "express-translate",
+  "description": "Add simple translation support to Express",
+  "version": "0.1.0",
+  "homepage": "https://github.com/uber/express-translate",
+  "author": {
+    "name": "Matt Morgan",
+    "email": "matt@mlmorg.com",
+    "url": "http://mlmorg.com"
+  },
+  "keywords": [
+    "express",
+    "translate",
+    "i18n"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/uber/express-translate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/uber/express-translate/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/uber/express-translate/blob/master/LICENSE"
+    }
+  ],
+  "main": "lib/express-translate",
+  "dependencies": {
+    "obj-extend": "~0.1.0"
+  },
+  "devDependencies": {
+    "chai": "~1.8.1",
+    "express": "~3.4.7",
+    "grunt": "~0.4.2",
+    "grunt-cli": "~0.1.11",
+    "grunt-contrib-jshint": "~0.7.2",
+    "jade": "~0.35.0",
+    "mocha": "~1.15.1",
+    "request": "~2.29.0"
+  },
+  "scripts": {
+    "test": "grunt && mocha -R spec"
+  }
+}
