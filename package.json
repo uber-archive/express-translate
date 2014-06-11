@@ -28,7 +28,8 @@
   ],
   "main": "lib/express-translate",
   "dependencies": {
-    "obj-extend": "~0.1.0"
+    "obj-extend": "~0.1.0",
+    "quotemeta": "0.0.0"
   },
   "devDependencies": {
     "chai": "~1.9.1",

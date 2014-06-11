@@ -38,4 +38,13 @@ describe('Loading a page that is translated with express-translate', function ()
       expect(this.body).to.eql('<p>Hello World</p><p>Hello Joe</p>');
     });
   });
+
+  describe('when the translation has multiple placeholder keys of the same name', function () {
+    fixedServer.run(['GET 200 /multiple-keys']);
+    httpUtils.save('http://localhost:1337/multiple-keys');
+
+    it('should interpolate values into both placeholders', function () {
+      expect(this.body).to.eql('<p>You get a prize and you get a prize</p>');
+    });
+  });
 });

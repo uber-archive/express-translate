@@ -70,3 +70,16 @@ exports['GET 200 /#locale-key'] = {
     }
   ]
 };
+
+exports['GET 200 /multiple-keys'] = {
+  method: 'get',
+  route: '/multiple-keys',
+  response: [
+    serverSetup,
+    setReqLocale('en'),
+    expressTranslateSetup(),
+    function (req, res) {
+      res.render('multiple');
+    }
+  ]
+};
