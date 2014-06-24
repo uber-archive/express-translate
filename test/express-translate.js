@@ -47,4 +47,47 @@ describe('Loading a page that is translated with express-translate', function ()
       expect(this.body).to.eql('<p>You get a prize and you get a prize</p>');
     });
   });
+
+  describe('when the translation has malicious interpolated values', function () {
+    fixedServer.run(['GET 200 /escape-values']);
+    httpUtils.save('http://localhost:1337/escape-values');
+
+    it('should escape the html when `whitelistedKeys` is not set for the associated key', function () {
+      expect(this.body).to.contain('<p>Hello &lt;script&gt;alert(&quot;hi&quot;)&lt;/script&gt;</p>');
+    });
+
+    it('should not escape the html when `whitelistedKeys` is set for the associated key', function () {
+      expect(this.body).to.contain('<p>Hello <script>alert("bye")</script>');
+    });
+  });
+
+  describe('when the translation has malicious interpolation keys', function () {
+    fixedServer.run(['GET 200 /escape-key']);
+    httpUtils.save('http://localhost:1337/escape-key');
+
+    it('should escape the key', function () {
+      expect(this.body).to.eql('<p>Hello ${&lt;script&gt;alert(&quot;hi&quot;)&lt;/script&gt;}</p>');
+    });
+  });
+
+  describe('when the translation has malicious content', function () {
+    fixedServer.run(['GET 200 /escape-translation']);
+    httpUtils.save('http://localhost:1337/escape-translation');
+
+    it('should escape the translation html but not the interpolated values', function () {
+      expect(this.body).to.contain('<p>&lt;script&gt;alert(&quot;hi&quot;)&lt;/script&gt; &lt;script&gt;alert(&quot;hi&quot;)&lt;/script&gt;</p>');
+      expect(this.body).to.contain('<p>&lt;script&gt;alert(&quot;hi&quot;)&lt;/script&gt; <script>alert("bye")</script>');
+    });
+  });
+
+  describe('when a new interpolation prefix/suffix are defined in the settings', function () {
+    describe('using html chars (< and >)', function () {
+      fixedServer.run(['GET 200 /interpolation-setting']);
+      httpUtils.save('http://localhost:1337/interpolation-setting');
+
+      it('should interpolate values correctly', function () {
+        expect(this.body).to.contain('<p>Hello World</p>');
+      });
+    });
+  });
 });

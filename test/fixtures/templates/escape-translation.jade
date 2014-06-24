@@ -1,0 +1,2 @@
+p!= t('malicious', {name: '<script>alert("hi")</script>'})
+p!= t('malicious', {name: '<script>alert("bye")</script>'}, {whitelistedKeys: ['name']})

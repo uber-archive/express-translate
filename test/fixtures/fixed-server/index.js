@@ -83,3 +83,58 @@ exports['GET 200 /multiple-keys'] = {
     }
   ]
 };
+
+exports['GET 200 /escape-values'] = {
+  method: 'get',
+  route: '/escape-values',
+  response: [
+    serverSetup,
+    setReqLocale('en'),
+    expressTranslateSetup(),
+    function (req, res) {
+      res.render('escape-values');
+    }
+  ]
+};
+
+exports['GET 200 /escape-key'] = {
+  method: 'get',
+  route: '/escape-key',
+  response: [
+    serverSetup,
+    setReqLocale('en'),
+    expressTranslateSetup(),
+    function (req, res) {
+      res.render('escape-key');
+    }
+  ]
+};
+
+exports['GET 200 /escape-translation'] = {
+  method: 'get',
+  route: '/escape-translation',
+  response: [
+    serverSetup,
+    setReqLocale('en'),
+    expressTranslateSetup(),
+    function (req, res) {
+      res.render('escape-translation');
+    }
+  ]
+};
+
+exports['GET 200 /interpolation-setting'] = {
+  method: 'get',
+  route: '/interpolation-setting',
+  response: [
+    serverSetup,
+    setReqLocale('en'),
+    expressTranslateSetup({
+      interpolationPrefix: '<',
+      interpolationSuffix: '>'
+    }),
+    function (req, res) {
+      res.render('interpolation-setting');
+    }
+  ]
+};

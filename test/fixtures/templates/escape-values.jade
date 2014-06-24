@@ -1,0 +1,2 @@
+p!= t('hello', {name: '<script>alert("hi")</script>'})
+p!= t('hello', {name: '<script>alert("bye")</script>'}, {whitelistedKeys: ['name']})
