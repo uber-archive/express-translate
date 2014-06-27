@@ -1,7 +1,7 @@
 {
   "name": "express-translate",
   "description": "Add simple translation support to Express",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "homepage": "https://github.com/uber/express-translate",
   "author": {
     "name": "Matt Morgan",
