@@ -75,6 +75,9 @@ be found. Defaults to `locale`.
 key used to replace content within the string. Defaults to `${`.
 - **interpolationSuffix** `String` Specifies the suffix of the interpolation
 key used to replace content within the string. Defaults to `}`.
+- **escapeHtml** `bool` Specifies whether to escape translations to prevent
+ possible exploitation. Useful to disable if you already handle this in your workflow.
+ Defaults to `true`.
 
 #### `expressTranslate.addLanguage(code, translations)`
 
@@ -107,7 +110,7 @@ default; you can whitelist a key by using the `whitelistedKeys` option.
 
 ## Solved XSS Vulnerabilities
 
-`express-translate` html-escapes translation strings, interpolation keys, and
+`express-translate`, by default, html-escapes translation strings, interpolation keys, and
 interpolation values to prevent the following possible XSS vulnerabilities:
 
 #### Malicious translations
