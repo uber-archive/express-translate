@@ -1,5 +1,7 @@
 # express-translate [![Build Status](https://travis-ci.org/uber/express-translate.png?branch=master)](https://travis-ci.org/uber/express-translate)
 
+(This project is deprecated and not maintained.)
+
 Adds translation support to [Express](http://expressjs.com/) by exposing a `t()`
 function to both the `req` object and your views (using `res.locals`). It will
 translate keys specified in an object mapping of `key => translation string` for
